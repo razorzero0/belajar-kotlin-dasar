@@ -13,5 +13,13 @@ var b= 5;
     for(i in arr){
         println(i)
     }
+    for(i in arr.indices){
+        println(arr[i])
+    }
+    //range
+    for (x in 1..5) {
+        print(x)
+    }
+
 
 }
