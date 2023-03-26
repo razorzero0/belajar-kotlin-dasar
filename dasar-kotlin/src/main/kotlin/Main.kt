@@ -1,7 +1,7 @@
-import org.w3c.dom.ranges.Range
-
+import com.dasarKotlin.util.*;
 const val APP = "ainun";
 fun main() {
+    string("yayan");
     //val = const, var = let
 //    val l:Long = 100_000L;
 //    val d:Double = 10.11;
@@ -195,6 +195,75 @@ fun main() {
 //        }
 //    }
 //    println("${sayHello("yayan")}");
+//println(factorial(10))
+//    println(tailFactorial(5))
+
+    //LAMBDA FUNCTION | function tanpa nama | it/this harus satu
+//    val upperCase: (String) -> String = {it.toUpperCase()}
+//    fun toUpper(value:String):String{
+//        return value.toUpperCase();
+//    }
+//    val upperCase: (String) -> String = ::toUpper
+//    var a = upperCase("yayan")
+//    println(a)
+
+    //HIGH ORDER FUCTION
+//    fun hello(value:String,transform: (String) -> String):String{
+//        return "Hello ${transform(value)}";
+//    }
+//    val upperTransform= {value:String -> value.toUpperCase()}
+//    var a = hello("yayan",upperTransform)
+//    var b = hello("Rido",{value:String -> value.toLowerCase()})
+//    println("$a dan $b")
+
+    //ANONYMUS FUNCTION // anonimus bisa juga domasukkan dalam parameter
+//    fun hello(value:String,transform: (String) -> String):String{
+//        return "Hello ${transform(value)}";
+//    }
+//    val anonimUpper = {fun(value:String):String{
+//        if(value.isBlank()){
+//            return "none"
+//        }else{
+//            return value.toUpperCase();
+//        }
+//    }}
+//    println(hello("yayan",anonimUpper()))
+
+    //CLOSURE
+//    var counter:Int = 0;
+//    val lambdaIncrement = {
+//        println("Lambdha Increment")
+//    counter++;
+//    }
+//    val AnnonimusIncrement = fun(){
+//        println("Anonimus Increment")
+//        counter++
+//    }
+//    lambdaIncrement()
+//    println(counter)
+//    AnnonimusIncrement()
+//    println(counter)
+
+    //INLINE | untk optimisasi pemanggilan function
+//    println(hello({ "yayan" },{20}))
+
+
+        //LABEL
+//    loop1@ for(i in 1..2){
+//        loop2@ for (s in i..10){
+//            if(s > 4){
+//                continue@loop1
+//            }else if(s > 9){
+//                break@loop1
+//            }
+//
+//            println("$i * $s = ${i * s}")
+//        }
+//    }
+
+
+
+
 
 }
 fun tes(i:Int){
@@ -230,7 +299,7 @@ fun arr(i:Int,vararg arr:Int){
         println("harganya adalah : ${awal} ")
 }
 
-    //Extenion functio
+    //Extenion function
 fun String.ext() = println("hello $this")
 
 //INFIX NOTAION
@@ -243,7 +312,31 @@ infix fun String.to(type :String):String{
     }
 }
 
-// RETURN IF & WHEN
+    //RECURSIVE FUNCTION
+fun factorial(value:Int):Int{
+  return when (value){
+      1 -> 1;
+      else -> value*factorial(value - 1);
+  }
+
+}
+
+    //TAIL RECURSIVE FUNCTION
+   tailrec fun tailFactorial(value:Int,total : Int = 1):Int{
+    return when(value){
+        1 -> total;
+        else -> tailFactorial(value - 1,total * value);
+    }
+    }
+
+// INLINE FUNCTION
+
+inline fun hello(name:() -> String,noinline umur: () -> Int):String{
+    return "Hello ${name()} umur saya ${umur()}"
+}
+
+
+
 
 
 
