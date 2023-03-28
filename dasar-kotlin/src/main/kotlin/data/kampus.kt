@@ -1,7 +1,11 @@
 package data
 
-open class kampus(val name:String){
-  fun hello(){
-      println("hello my name is $name")
+open class kampus(open val name:String,val umur:Int){
+
+   constructor(name: String):this(name,20){
+
+    }
+  open fun hello(){
+      println("hello my name is ${this.name} umur $umur")
   }
 }
